@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -10,9 +11,15 @@ export class HeaderComponent implements OnInit {
 
   faSearch = faSearch;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  createDesign() {
+    this.router.navigate(['create'])
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -71,9 +73,30 @@ export class LandingPageComponent implements OnInit {
     category: 'Category'
   }];
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  handleRecentDesign(details: any) {
+    this.dialog.open(ModalComponent, {
+      width: '700px',
+      data: {
+        details: details,
+        actions: [{
+          id: 'edt',
+          label: 'Edit'
+        }, {
+          id: 'cpy',
+          label: 'Make a copy'
+        }, {
+          id: 'shr',
+          label: 'Share this design'
+        }]
+      }
+    });
   }
 
 }

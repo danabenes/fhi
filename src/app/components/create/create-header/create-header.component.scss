@@ -1,0 +1,60 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    border-bottom: 1px solid #669383;
+    z-index: 2;
+    background-color: #669383;
+    padding: 0 20px;
+
+    .content {
+        justify-content: space-between;
+        height: 100%;
+        color: white;
+
+        .menu-container {
+            list-style: none;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0 10px;
+                font-size: 13pt;
+                font-family: 'Montserrat-SemiBold';
+                cursor: pointer;
+
+                fa-icon {
+                    margin-right: 8px;
+                }
+            }
+        }
+
+        .btn-container {
+            justify-content: end;
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+            .btn {
+                padding: 10px 20px;
+                text-align: center;
+                font-family: 'Montserrat-Bold';
+                border-radius: 5px;
+                margin: 0 10px;
+            }
+
+            .share {
+                background-color: #fa9e3d;
+            }
+
+            .download {
+                background-color: #006168;
+            }
+        }
+    }
+}

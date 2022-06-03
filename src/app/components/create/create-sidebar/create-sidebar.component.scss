@@ -1,0 +1,27 @@
+.sidebar {
+    padding-top: 80px;
+    width: 350px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+
+    .sidebar-content {
+        display: flex;
+        height: 100%;
+
+        .type {
+            background-color: #1f2e2f;
+            width: 25%;
+            height: 100%;
+        }
+
+        .list {
+            background-color: #444a4a;
+            width: 85%;
+            padding: 10px;
+            height: 100%;
+        }
+    }
+}

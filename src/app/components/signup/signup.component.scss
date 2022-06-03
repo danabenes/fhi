@@ -6,8 +6,15 @@
     height: 100%;
 
     .content {
-        width: 400px;
+        width: 600px;
         text-align: center;
+        color: #6f7070;
+
+        a {
+            text-decoration: none;
+            color: #2673f3;
+            font-family: 'Montserrat-Bold';
+        }
 
         img {
             max-width: 200px;
@@ -16,18 +23,22 @@
         h1 {
             font-family: 'Montserrat-Black';
             color: #006168;
-            font-size: 25pt;
+            font-size: 20pt;
             line-height: 1.4;
-            margin: 20px 0;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: left;
+            color: #006168;
+            font-size: 16pt;
+            font-family: 'Montserrat-Bold';
+            margin-bottom: 10px;
         }
 
         form {
             color: #8e9293;
-
-            a {
-                text-decoration: none;
-                color: #2673f3;
-            }
+            margin-top: 2em;
 
             .field-container {
                 margin: 10px 0;
@@ -40,56 +51,51 @@
                 }
             }
 
-            .rf-container {
-                display: flex;
+            .psw-container, .name-container, .cr-container {
                 justify-content: space-between;
-                font-size: 9pt;
 
-                .remember {
-                    display: flex;
-                    align-items: center;
+                & > div {
+                    width: 48%;
+                }
+            }
 
-                    label {
-                        cursor: pointer;
-                    }
+            .personal {
+                margin-top: 1em;
+            }
+
+            .cr-container {
+                select {
+                    width: 100%;
+                    padding: 14px 10px;
+                    border: 0;
+                    color: #6f7070;
                 }
             }
 
             .btn-container {
-                margin: 10px 0;
+                margin: 2em 0;
+                text-align: left;
+                display: flex;
 
                 .btn {
-                    width: 100%;
-                    padding: 10px;
-                    border: 1px solid transparent;
-                    cursor: pointer;
-                    box-sizing: border-box;
-                    background-color: #35a592;
-                    color: white;
-                    font-family: 'Montserrat-Bold';
+                    width: 180px;
+                    margin-right: 10px;
+                    text-align: center;
+                    padding: 15px;
                     font-size: 12pt;
-                }
-            }
-
-            .create-account {
-                text-align: left;
-                font-size: 9pt;
-
-                a {
                     font-family: 'Montserrat-Bold';
-                    text-decoration: none;
-                    color: #2673f3;
+                    border-radius: 10px;
+                    cursor: pointer;
                 }
-            }
 
-            p {
-                text-align: left;
-                margin: 0;
-                font-size: 9pt;
+                .submit {
+                    background-color: #006168;
+                    color: white;
+                }
 
-                a {
-                    color: #8e9293;
-                    text-decoration: underline;
+                .cancel {
+                    background-color: #ffd1d1;
+                    color: black;
                 }
             }
         }

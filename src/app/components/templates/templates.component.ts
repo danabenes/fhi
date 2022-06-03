@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-templates',
@@ -54,9 +56,24 @@ export class TemplatesComponent implements OnInit {
     category: 'Category'
   }];
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  useTemplate(details: any) {
+    this.dialog.open(ModalComponent, {
+      width: '700px',
+      data: {
+        details: details,
+        actions: [{
+          id: 'ut',
+          label: 'Use Template'
+        }]
+      }
+    });
   }
 
 }

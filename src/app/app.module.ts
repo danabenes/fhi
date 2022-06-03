@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
@@ -20,6 +22,10 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { ReportsOverviewComponent } from './components/reports-overview/reports-overview.component';
 import { ReportsDatatableComponent } from './components/reports-datatable/reports-datatable.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { CreateComponent } from './components/create/create.component';
+import { ModalComponent } from './components/shared/modal/modal.component';
+import { CreateHeaderComponent } from './components/create/create-header/create-header.component';
+import { CreateSidebarComponent } from './components/create/create-sidebar/create-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,11 @@ import { SignupComponent } from './components/signup/signup.component';
     ReportsComponent,
     ReportsOverviewComponent,
     ReportsDatatableComponent,
-    SignupComponent
+    SignupComponent,
+    CreateComponent,
+    ModalComponent,
+    CreateHeaderComponent,
+    CreateSidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +53,8 @@ import { SignupComponent } from './components/signup/signup.component';
     MatFormFieldModule,
     MatInputModule,
     FontAwesomeModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

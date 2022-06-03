@@ -1,10 +1,35 @@
 <div class="sidebar">
     <div class="sidebar-content">
         <div class="type">
-            asdasd
+            <ul>
+                <li (click)="showList('template')" [ngClass]="{'isActive': currentTab === 'template'}">
+                    <fa-icon [icon]="faFileCode"></fa-icon><br>
+                    <span>Template</span>
+                </li>
+                <li (click)="showList('upload')" [ngClass]="{'isActive': currentTab === 'upload'}">
+                    <fa-icon [icon]="faCloudUploadAlt"></fa-icon><br>
+                    <span>Upload</span>
+                </li>
+                <li (click)="showList('text')" [ngClass]="{'isActive': currentTab === 'text'}">
+                    <fa-icon [icon]="faFont"></fa-icon><br>
+                    <span>Text</span>
+                </li>
+            </ul>
         </div>
         <div class="list">
-            asdcxa
+            <div class="search">
+                <input type="text" placeholder="Search">
+                <fa-icon [icon]="faSearch"></fa-icon>
+            </div>
+            <div class="lbl-seeAll">
+                <p>Recent</p>
+                <div class="clickable">See all</div>
+            </div>
+            <div class="selected-list">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
         </div>
     </div>
 </div>

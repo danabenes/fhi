@@ -15,6 +15,33 @@
             background-color: #1f2e2f;
             width: 25%;
             height: 100%;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    text-align: center;
+                    font-size: 15pt;
+                    cursor: pointer;
+                    padding: 15px 0;
+                    color: white;
+
+                    fa-icon {
+                        pointer-events: none;
+                    }
+
+                    span {
+                        font-size: 8pt;
+                        pointer-events: none;
+                    }
+
+                    &.isActive {
+                        background-color: #444a4a;
+                    }
+                }
+            }
         }
 
         .list {
@@ -22,6 +49,56 @@
             width: 85%;
             padding: 10px;
             height: 100%;
+
+            .search {
+                position: relative;
+
+                fa-icon {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    font-size: 14pt;
+                    color: #707070;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 10px 10px 10px 35px;
+                }
+            }
+
+            .lbl-seeAll {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                color: white;
+
+                p {
+                    font-family: 'Montserrat-SemiBold';
+                    margin: 0;
+                }
+
+                .clickable {
+                    cursor: pointer;
+                    color: #767a7a;
+                    font-size: 10pt;
+                }
+            }
+
+            .selected-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                
+                .tile {
+                    width: 48%;
+                    background-color: #24b5bf;
+                    height: 120px;
+                    margin: 5px 0;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

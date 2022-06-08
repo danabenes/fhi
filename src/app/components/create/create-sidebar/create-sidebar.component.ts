@@ -24,6 +24,7 @@ export class CreateSidebarComponent implements OnInit {
   }
 
   showList(selected: string) {
+    this.currentTab = selected;
     if(selected === 'text') {
       this.getTextElements();
     }

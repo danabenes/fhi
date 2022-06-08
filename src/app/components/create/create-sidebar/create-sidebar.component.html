@@ -30,16 +30,18 @@
                                 {{textElem.label}}
                     </div>
                 </div>
+                <div *ngIf="currentTab === 'template'">
+                    <div class="lbl-seeAll">
+                        <p>Recent</p>
+                        <div class="clickable">See all</div>
+                    </div>
+                    <div class="selected-list">
+                        <div class="tile" (click)="addElement('font', null)"></div>
+                        <div class="tile"></div>
+                        <div class="tile"></div>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="lbl-seeAll">
-                <p>Recent</p>
-                <div class="clickable">See all</div>
-            </div>
-            <div class="selected-list">
-                <div class="tile" (click)="addElement('font')">Dana</div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-            </div> -->
         </div>
     </div>
 </div>

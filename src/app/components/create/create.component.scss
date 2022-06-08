@@ -16,5 +16,28 @@
             background-color: white;
             box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
          }
+
+         .poster-wrapper {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             flex-direction: column;             
+
+             & > div {
+                display: flex;
+                align-items: center;
+             }
+
+             .textbox {
+                padding: 10px;
+                border: 1px dotted black;
+                text-align: center;
+                font-size: 14pt;
+             }
+         }
     }
+}
+
+#download {
+    display: none;
 }

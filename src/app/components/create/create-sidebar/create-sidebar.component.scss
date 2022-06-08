@@ -47,7 +47,7 @@
         .list {
             background-color: #444a4a;
             width: 85%;
-            padding: 10px;
+            padding: 10px 15px;
             height: 100%;
 
             .search {
@@ -96,6 +96,17 @@
                     height: 120px;
                     margin: 5px 0;
                     border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+
+            .element-list {
+                .element-text {
+                    background-color: #343536;
+                    color: white;
+                    padding: 15px 10px;
+                    margin: 10px 0;
+                    border: 5px;
                     cursor: pointer;
                 }
             }

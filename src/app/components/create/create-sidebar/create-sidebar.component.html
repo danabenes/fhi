@@ -21,15 +21,25 @@
                 <input type="text" placeholder="Search">
                 <fa-icon [icon]="faSearch"></fa-icon>
             </div>
-            <div class="lbl-seeAll">
+            <div class="element-list">
+                <div *ngIf="currentTab === 'text'">
+                    <div class="element-text" *ngFor="let textElem of currentElementList" 
+                        style="font-family: {{textElem.fontFace}}; 
+                                font-size: {{textElem.fontSize}};"
+                        (click)="addElement('textbox', textElem)">
+                                {{textElem.label}}
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="lbl-seeAll">
                 <p>Recent</p>
                 <div class="clickable">See all</div>
             </div>
             <div class="selected-list">
+                <div class="tile" (click)="addElement('font')">Dana</div>
                 <div class="tile"></div>
                 <div class="tile"></div>
-                <div class="tile"></div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

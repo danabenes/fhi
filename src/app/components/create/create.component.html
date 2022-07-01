@@ -2,18 +2,9 @@
 <app-create-sidebar (element)="getElementData($event)"></app-create-sidebar>
 <div class="container">
     <div class="content">
-        <!-- <div (click)="saveImage()">Save Image</div> -->
-        <div #screen class="poster-wrapper">
-            <div cdkDrag 
-                cdkDragBoundary=".poster-wrapper" 
-                *ngFor="let e of arrayOfElements" 
-                [innerHtml]="e.elmnt" 
-                class="{{e.type}}"></div>
-        </div>
+        <div class="toolbar-container"><app-rich-text-toolbar (style)="handleElementStyle($event)"></app-rich-text-toolbar></div>
+        <section class="area" id="drag-resize-area">
+            <div #appendElement></div> 
+        </section>
     </div>
-</div>
-
-<div id="download">
-    <img #canvas>
-    <a #downloadLink></a>
 </div>

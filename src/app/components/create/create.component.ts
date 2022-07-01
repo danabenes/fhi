@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, ComponentFactoryResolver, ComponentRef, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import html2canvas from 'html2canvas';
+import { NgxResizeHandleType } from 'ngx-drag-resize';
+import { DynamicElementContainerComponent } from '../shared/dynamic-element-container/dynamic-element-container.component';
 
 @Component({
   selector: 'app-create',
@@ -9,32 +10,43 @@ import html2canvas from 'html2canvas';
 })
 export class CreateComponent implements OnInit {
 
+  readonly handleType = NgxResizeHandleType;
+
   elementData: any;
   newElement: any;
   arrayOfElements: Array<any> = [];
 
-  constructor(
-    private sanitizer: DomSanitizer
-  ) { }
+  @ViewChild('appendElement', { read: ViewContainerRef })
+  appendElement!: ViewContainerRef;
+
+  components: Array<any> = [];
+  dynamicElement = DynamicElementContainerComponent;
 
   @ViewChild('screen')screen!: ElementRef;
   @ViewChild('canvas')canvas!: ElementRef;
   @ViewChild('downloadLink')downloadLink!: ElementRef;
+
+  constructor(
+    private resolver: ComponentFactoryResolver
+  ) { 
+  }
 
   ngOnInit(): void {
     console.log(this.elementData);
   }
 
   getElementData(data: any) {
-    if(data.type === 'textbox') {
-      const inputField = '<div class="input-container"><input type="text" placeholder="Add text here" style="font-family:'+ data.fontFace +';font-size:'+data.fontSize+'"></div>';
-      this.arrayOfElements.push({
-        elmnt: this.sanitizer.bypassSecurityTrustHtml(inputField), 
-        style: data
-      });
-    }
+    const componentFactory = this.resolver.resolveComponentFactory(DynamicElementContainerComponent);
+    const elementData = this.appendElement.createComponent(componentFactory).instance;
+    elementData.data = data;
+    // const component = this.appendElement.createComponent(componentFactory);
+    // this.components.push({element: component, data: data});
+    this.components.push(elementData);
+  }
 
-    console.log(this.arrayOfElements);
+  handleElementStyle(style:any) {
+    this.components[this.components.length - 1].data[style.key] = style.value;
+    console.log(this.components[this.components.length - 1].data);
   }
 
   saveImage() {

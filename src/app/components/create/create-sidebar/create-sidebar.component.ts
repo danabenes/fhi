@@ -54,7 +54,6 @@ export class CreateSidebarComponent implements OnInit {
   }
 
   addElement(type: string, data: any) {
-    console.log(type, data);
     data.type = type;
     this.element.emit(data);
   }

@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TextFieldModule } from '@angular/cdk/text-field';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -27,6 +28,10 @@ import { CreateComponent } from './components/create/create.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
 import { CreateHeaderComponent } from './components/create/create-header/create-header.component';
 import { CreateSidebarComponent } from './components/create/create-sidebar/create-sidebar.component';
+import { NgxDragResizeModule } from 'ngx-drag-resize';
+import { DynamicElementContainerComponent } from './components/shared/dynamic-element-container/dynamic-element-container.component';
+import { RichTextToolbarComponent } from './components/shared/rich-text-toolbar/rich-text-toolbar.component';
+import { ResizableModule } from 'angular-resizable-element';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,9 @@ import { CreateSidebarComponent } from './components/create/create-sidebar/creat
     CreateComponent,
     ModalComponent,
     CreateHeaderComponent,
-    CreateSidebarComponent
+    CreateSidebarComponent,
+    DynamicElementContainerComponent,
+    RichTextToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +63,13 @@ import { CreateSidebarComponent } from './components/create/create-sidebar/creat
     FontAwesomeModule,
     MatTableModule,
     MatDialogModule,
-    DragDropModule
+    NgxDragResizeModule,
+    TextFieldModule,
+    DragDropModule,
+    ResizableModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DynamicElementContainerComponent]
 })
 export class AppModule { }

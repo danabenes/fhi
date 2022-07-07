@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ComponentRef, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { NgxResizeHandleType } from 'ngx-drag-resize';
 import { DynamicElementContainerComponent } from '../shared/dynamic-element-container/dynamic-element-container.component';
@@ -39,14 +39,15 @@ export class CreateComponent implements OnInit {
     const componentFactory = this.resolver.resolveComponentFactory(DynamicElementContainerComponent);
     const elementData = this.appendElement.createComponent(componentFactory).instance;
     elementData.data = data;
-    // const component = this.appendElement.createComponent(componentFactory);
-    // this.components.push({element: component, data: data});
     this.components.push(elementData);
   }
 
   handleElementStyle(style:any) {
-    this.components[this.components.length - 1].data[style.key] = style.value;
-    console.log(this.components[this.components.length - 1].data);
+    if (this.components[this.components.length - 1].data.hasOwnProperty('fontStyle')) {
+      delete this.components[this.components.length - 1].data[style.key];
+    } else {
+      this.components[this.components.length - 1].data[style.key] = style.value;
+    }
   }
 
   saveImage() {

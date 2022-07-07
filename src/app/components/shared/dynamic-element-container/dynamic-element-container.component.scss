@@ -1,15 +1,15 @@
 .container {
   position: relative;
-  width: 300px;
-  resize: both;
+  width: auto;
   overflow: auto;
-  border: 1px dotted;
-  padding: 5px;
+  padding: 0;
 
   textarea {
     width: 100%;
     height: auto;
     border: 0;
+    background-color: transparent;
+    text-align: center;
 
     &:focus {
       outline: none;
@@ -22,67 +22,15 @@
 
   .drag-handler {
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   top: -30px;
-  //   right: -30px;
-  //   bottom: -30px;
-  //   left: -30px;
-  //   border: 5px solid #f00;
-  // }
+  &.selected {
+    border: 1px dotted;
+    resize: both;
+    width: 100px;
+    padding: 0;
+  }
 }
-
-
-
-// .rectangle {
-//         position: relative;
-//         top: 200px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         width: 300px;
-//         height: 150px;
-//         background-color: #fd4140;
-//         border: solid 1px #121621;
-//         color: #121621;
-//         margin: auto;
-//       }
-
-//       mwlResizable {
-//         box-sizing: border-box; // required for the enableGhostResize option to work
-//       }
-
-//       .resize-handle-top,
-//       .resize-handle-bottom {
-//         position: absolute;
-//         height: 5px;
-//         cursor: row-resize;
-//         width: 100%;
-//       }
-
-//       .resize-handle-top {
-//         top: 0;
-//       }
-
-//       .resize-handle-bottom {
-//         bottom: 0;
-//       }
-
-//       .resize-handle-left,
-//       .resize-handle-right {
-//         position: absolute;
-//         height: 100%;
-//         cursor: col-resize;
-//         width: 5px;
-//       }
-
-//       .resize-handle-left {
-//         left: 0;
-//       }
-
-//       .resize-handle-right {
-//         right: 0;
-//       }

@@ -33,4 +33,21 @@
     width: 100px;
     padding: 0;
   }
+
+  &.isImage {
+
+    .bg-image-elem {
+      max-width: 500px;
+      max-height: 500px;
+      height: 100%;
+      width: 100%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+        max-height: 500px;
+      }
+    }
+  }
 }

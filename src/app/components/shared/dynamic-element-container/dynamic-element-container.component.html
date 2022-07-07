@@ -1,4 +1,4 @@
-<div class="container" [ngClass]="{'selected': isSelected}" cdkDrag>
+<div class="container" [ngClass]="{'selected': isSelected, 'isImage': type === 'image'}" cdkDrag>
     <div class="drag-handler" cdkDragHandle *ngIf="isSelected">
         <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
           <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
@@ -6,7 +6,7 @@
         </svg>
     </div>
 
-    <div class="textarea-container">
+    <div class="textarea-container" *ngIf="type === 'textbox'">
         <textarea
         [style.font-size]="data.fontSize"
         [style.font-family]="data.fontFace"
@@ -17,6 +17,10 @@
         #autosize="cdkTextareaAutosize"
         cdkAutosizeMinRows="1"></textarea> 
     </div> 
+
+    <div *ngIf="type === 'image'">
+        <div class="bg-image-elem"><img src="/assets/images/bg-images/{{data.image}}"></div>
+    </div>
 </div>
 
 

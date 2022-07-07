@@ -14,6 +14,10 @@
                     <fa-icon [icon]="faFont"></fa-icon><br>
                     <span>Text</span>
                 </li>
+                <li (click)="showList('image')" [ngClass]="{'isActive': currentTab === 'image'}">
+                    <fa-icon [icon]="faFont"></fa-icon><br>
+                    <span>Image</span>
+                </li>
             </ul>
         </div>
         <div class="list">
@@ -39,6 +43,13 @@
                         <div class="tile" (click)="addElement('font', null)"></div>
                         <div class="tile"></div>
                         <div class="tile"></div>
+                    </div>
+                </div>
+                <div class="bg-images" *ngIf="currentTab === 'image'">
+                    <div class="image-list" >
+                        <div *ngFor="let imageElem of currentElementList" (click)="addElement('image', imageElem )">
+                            <img src="/assets/images/bg-images/{{imageElem.image}}">
+                        </div>
                     </div>
                 </div>
             </div>

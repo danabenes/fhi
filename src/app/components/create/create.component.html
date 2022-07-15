@@ -1,10 +1,34 @@
 <app-create-header></app-create-header>
-<app-create-sidebar (element)="getElementData($event)"></app-create-sidebar>
+<app-create-sidebar (element)="addElement($event)"></app-create-sidebar>
 <div class="container">
-    <div class="content">
-        <div class="toolbar-container"><app-rich-text-toolbar (style)="handleElementStyle($event)"></app-rich-text-toolbar></div>
-        <section class="area" id="drag-resize-area">
-            <div #appendElement></div> 
+    <div class="content" (click)="clickedOutside($event)">
+        <div class="toolbar-container">
+            <app-rich-text-toolbar #richText (style)="setElementStyle($event)" [fontSize]="defaultFontSize"></app-rich-text-toolbar>
+        </div>
+        <section #canvas class="area" id="drag-resize-area" 
+            [ngClass]="{bgActive: bgSelected && currentIndex === 0}"
+            [style.background]="backgroundColor" 
+            (click)="selectBgArea($event)">
+            <div *ngFor="let element of arrayOfElements | slice:1 ; index as indexOfelement;" cdkDrag>
+                <div>
+                    <div class="element-container"
+                        (click)="selectElement(indexOfelement + 1)"
+                        [ngClass]="{isActive: currentIndex === indexOfelement + 1, isTextArea: element.type === 'textbox'}">
+                        <textarea *ngIf="element.type === 'textbox'"
+                            [ngClass]="{notSelected: currentIndex !== indexOfelement + 1}"
+                            [style.font-size]="element.fontSize"
+                            [style.font-family]="element.fontFace"
+                            [style.font-style]="element.fontStyle"
+                            [style.color]="element.textColor"
+                            matInput
+                            cdkTextareaAutosize
+                            autofocus
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1">Add text here</textarea>
+                    </div>
+                    <div *ngIf="currentIndex === indexOfelement + 1" cdkDragHandle>drag</div>
+                </div>
+            </div>
         </section>
     </div>
 </div>

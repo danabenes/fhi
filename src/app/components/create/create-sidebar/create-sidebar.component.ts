@@ -12,7 +12,7 @@ export class CreateSidebarComponent implements OnInit {
   faCloudUploadAlt = faCloudUploadAlt;
   faFont = faFont;
   faSearch = faSearch;
-  currentTab : string = 'image';
+  currentTab : string = 'text';
   currentElementList: Array<any> = [];
 
   @Output() element: EventEmitter<any> = new EventEmitter();
@@ -21,19 +21,13 @@ export class CreateSidebarComponent implements OnInit {
   textList = [
     {
       fontFace: 'Montserrat-Bold',
-      fontSize: '18pt',
+      fontSize: '25px',
       name: 'heading',
       label: 'Add heading'
     },
     {
-      fontFace: 'Montserrat-SemiBold',
-      fontSize: '15pt',
-      name: 'sub-heading',
-      label: 'Add subheading'
-    },
-    {
       fontFace: 'Montserrat-Reg',
-      fontSize: '12pt',
+      fontSize: '16px',
       name: 'body-text',
       label: 'Add body text'
     }

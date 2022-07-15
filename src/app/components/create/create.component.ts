@@ -1,7 +1,4 @@
-import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import html2canvas from 'html2canvas';
-import { NgxResizeHandleType } from 'ngx-drag-resize';
-import { DynamicElementContainerComponent } from '../shared/dynamic-element-container/dynamic-element-container.component';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-create',
@@ -10,53 +7,59 @@ import { DynamicElementContainerComponent } from '../shared/dynamic-element-cont
 })
 export class CreateComponent implements OnInit {
 
-  readonly handleType = NgxResizeHandleType;
-
-  elementData: any;
-  newElement: any;
-  arrayOfElements: Array<any> = [];
-
-  @ViewChild('appendElement', { read: ViewContainerRef })
-  appendElement!: ViewContainerRef;
-
-  components: Array<any> = [];
-  dynamicElement = DynamicElementContainerComponent;
-
-  @ViewChild('screen')screen!: ElementRef;
   @ViewChild('canvas')canvas!: ElementRef;
-  @ViewChild('downloadLink')downloadLink!: ElementRef;
+  @ViewChild('richText')richText!: ElementRef;
+
+  arrayOfElements: Array<any> = [];
+  selectedElement: any;
+
+  bgSelected : boolean = false;
+  currentIndex:any = null;
+  backgroundColor: string = 'white';
+  defaultFontSize : number = 12;
 
   constructor(
-    private resolver: ComponentFactoryResolver
   ) { 
   }
 
   ngOnInit(): void {
-    console.log(this.elementData);
+    this.arrayOfElements.push({type: 'background', color: 'white'});
   }
 
-  getElementData(data: any) {
-    const componentFactory = this.resolver.resolveComponentFactory(DynamicElementContainerComponent);
-    const elementData = this.appendElement.createComponent(componentFactory).instance;
-    elementData.data = data;
-    this.components.push(elementData);
-  }
-
-  handleElementStyle(style:any) {
-    if (this.components[this.components.length - 1].data.hasOwnProperty('fontStyle')) {
-      delete this.components[this.components.length - 1].data[style.key];
-    } else {
-      this.components[this.components.length - 1].data[style.key] = style.value;
+  clickedOutside(element:any) {
+    if(element.target === element.currentTarget) {
+      this.bgSelected = false;
+      this.currentIndex = null;
     }
   }
 
-  saveImage() {
-    html2canvas(this.screen.nativeElement).then(canvas => {
-      this.canvas.nativeElement.src = canvas.toDataURL();
-      this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
-      this.downloadLink.nativeElement.download = 'marble-diagram.png';
-      this.downloadLink.nativeElement.click();
-    });
+  selectBgArea(element: any) {
+    if(element.target === element.currentTarget) {
+      this.bgSelected = true;
+      this.currentIndex = 0;
+    }
+  }
+
+  addElement(data: any) {
+    let indexOfLatestElem = this.arrayOfElements.push(data) - 1;
+    this.currentIndex = indexOfLatestElem;
+    this.defaultFontSize = data.fontSize ? data.fontSize.substring(0,2) : 12;
+  }
+
+  selectElement(index: number) {
+    this.currentIndex = index;
+  }
+
+  setElementStyle(styles: any) {
+    if(this.arrayOfElements[this.currentIndex].hasOwnProperty(styles.key) && this.arrayOfElements[this.currentIndex][styles.key] === styles.value) {
+      delete this.arrayOfElements[this.currentIndex][styles.key];
+    } else {
+      this.arrayOfElements[this.currentIndex][styles.key] = styles.value;
+    }
+
+    if(styles.key === 'bg') {
+      this.backgroundColor = styles.value;
+    }
   }
 
 }

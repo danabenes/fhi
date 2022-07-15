@@ -26,11 +26,74 @@
           width: 500px;
           background: white;
           box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+          z-index: 2;
+          cursor: pointer;
+          overflow: hidden;
+
+          &.bgActive {
+            border: 2px dotted black;
+          }
         
           &.large {
             height: 500px;
           }
+
+          &.isActive {
+            border: 1px dotted black;
+          }
+
+          .drag-handler {
+            display: none;
+
+            &.enableDrag {
+              display: block;
+            }
+          }
+
+          .element-container {
+            width: auto;
+            display: inline-block;
+            resize: none;
+
+            &.isActive {
+              border: 1px solid black;
+            }
+
+            &.isTextArea {
+              textarea {
+                border: 0;
+                background-color: transparent;
+                resize: both;
+
+                &:focus, &:focus-visible {
+                  border: 0;
+                  outline: none;
+                }
+
+                &.notSelected {
+                  resize: none;
+                }
+              }
+            }
+          }
         }
+
+        textarea {
+          width: auto;
+          max-width: 500px;
+          max-height: 500px;
+          background-color: transparent;
+          border: 0;
+          overflow: hidden;
+        }
+    }
+
+    .activeElement {
+      textarea {
+        resize: both;
+        overflow: auto;
+        border: 1px dotted black;
+      }
     }
 }
 

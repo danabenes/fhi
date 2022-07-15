@@ -5,13 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -28,10 +32,9 @@ import { CreateComponent } from './components/create/create.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
 import { CreateHeaderComponent } from './components/create/create-header/create-header.component';
 import { CreateSidebarComponent } from './components/create/create-sidebar/create-sidebar.component';
-import { NgxDragResizeModule } from 'ngx-drag-resize';
-import { DynamicElementContainerComponent } from './components/shared/dynamic-element-container/dynamic-element-container.component';
 import { RichTextToolbarComponent } from './components/shared/rich-text-toolbar/rich-text-toolbar.component';
 import { ResizableModule } from 'angular-resizable-element';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,6 @@ import { ResizableModule } from 'angular-resizable-element';
     ModalComponent,
     CreateHeaderComponent,
     CreateSidebarComponent,
-    DynamicElementContainerComponent,
     RichTextToolbarComponent
   ],
   imports: [
@@ -63,13 +65,15 @@ import { ResizableModule } from 'angular-resizable-element';
     FontAwesomeModule,
     MatTableModule,
     MatDialogModule,
-    NgxDragResizeModule,
     TextFieldModule,
     DragDropModule,
-    ResizableModule
+    ResizableModule,
+    ColorPickerModule,
+    HttpClientModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent],
-  entryComponents: [DynamicElementContainerComponent]
+  entryComponents: []
 })
 export class AppModule { }

@@ -21,19 +21,25 @@
             </ul>
         </div>
         <div class="list">
+            <!-- SEARCH -->
             <div class="search">
                 <input type="text" placeholder="Search">
                 <fa-icon [icon]="faSearch"></fa-icon>
             </div>
+
+            
             <div class="element-list">
+
+                <!-- TEXT -->
                 <div *ngIf="currentTab === 'text'">
                     <div class="element-text" *ngFor="let textElem of currentElementList" 
-                        style="font-family: {{textElem.fontFace}}; 
-                                font-size: {{textElem.fontSize}};"
+                        style="font-family: {{textElem.fontFace}}; font-size: {{textElem.fontSize}};"
                         (click)="addElement('textbox', textElem)">
                                 {{textElem.label}}
                     </div>
                 </div>
+
+                <!-- TEMPLAT -->
                 <div *ngIf="currentTab === 'template'">
                     <div class="lbl-seeAll">
                         <p>Recent</p>
@@ -45,6 +51,8 @@
                         <div class="tile"></div>
                     </div>
                 </div>
+
+                <!-- IMAGE -->
                 <div class="bg-images" *ngIf="currentTab === 'image'">
                     <div class="image-list" >
                         <div *ngFor="let imageElem of currentElementList" (click)="addElement('image', imageElem )">

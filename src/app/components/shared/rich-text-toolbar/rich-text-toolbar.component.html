@@ -1,19 +1,31 @@
-<ul>
-    <li (click)="setStyle('fontStyle','bold')">b</li>
-    <li (click)="setStyle('fontStyle','italic')">I</li>
-    <li>c</li>
-    <li>
-        <select>
-            <option value="10">10</option>
-            <option value="12">12</option>
-            <option value="14">14</option>
-            <option value="16">16</option>
-            <option value="18">18</option>
-            <option value="20">20</option>
-            <option value="24">24</option>
-            <option value="28">28</option>
-            <option value="30">30</option>
-            <option value="32">32</option>
-        </select>
-    </li>
-</ul>
+<div class="container">
+  <div class="editor-icons">
+    <!-- background color -->
+    <div class="bg-color">
+        <span [style.color]="bgColor"
+            [cpPosition]="'bottom'"
+            [cpPositionOffset]="'50%'"
+            [cpPositionRelativeToArrow]="true"
+            [(colorPicker)]="bgColor"
+            [style.background]="bgColor"
+            (colorPickerChange)="onColorChange('bg', bgColor)">
+        </span>
+    </div>
+    <!-- font style -->
+    <div class="font-style">
+        <mat-select (selectionChange)="onFontSelect('fontFace', $event)" [(value)]="selectedOption">
+            <mat-option [value]="'default'" aria-disabled="true">Select Font</mat-option>
+            <mat-option *ngFor="let fontFace of fonts['items']" [value]="fontFace['family']">
+                <span [style.font-family]="fontFace['family']">{{fontFace['family']}}</span>
+            </mat-option>
+        </mat-select>
+    </div>
+    <!-- font size -->
+    <div class="font-size">
+        <p class="minus" (click)="handleFont('deduct')"><fa-icon [icon]="faMinus"></fa-icon></p>
+        <p class="size-value">{{fontSize}}</p>
+        <p class="add" (click)="handleFont('add')"><fa-icon [icon]="faPlus"></fa-icon></p>
+    </div>
+  </div>
+  <div class="delete"><fa-icon [icon]="faDelete"></fa-icon></div>
+</div>

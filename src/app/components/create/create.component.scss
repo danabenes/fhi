@@ -76,6 +76,11 @@
               }
             }
           }
+
+          .wrapper {
+            position: relative;
+            display: inline-block;
+          }
         }
 
         textarea {
@@ -86,6 +91,22 @@
           border: 0;
           overflow: hidden;
         }
+
+        .image-wrapper {
+          width: 200px;
+          height: 200px;
+          max-width: 500px;
+          max-height: 500px;
+
+          &.isActive {
+            resize: both;
+            overflow: hidden;
+          }
+
+          img {
+            height: 100%;
+          }
+        }
     }
 
     .activeElement {
@@ -95,6 +116,13 @@
         border: 1px dotted black;
       }
     }
+}
+
+::ng-deep {
+  .cdk-drag-handle {
+    margin: 15px auto 0 auto !important;
+    text-align: center !important;
+  }
 }
 
 #download {

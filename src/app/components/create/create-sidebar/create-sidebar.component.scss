@@ -129,6 +129,52 @@
                     }
                 }
             }
+
+            .uploaded-images {
+                .upload-form {
+                    margin-top: 20px;
+
+                    input {
+                        display: none;
+                    }
+
+                    .form-display {
+                        display: flex;
+
+                        label {
+                            width: 65%;
+                            background-color: white;
+                            color: gainsboro;
+                            padding: 10px 3px 10px 8px;
+                            cursor: pointer;
+                            overflow: hidden;
+                            
+                            &.hasImage {
+                                color: black;
+                                max-width: 160px;
+                                display: block;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                            }
+                        }
+
+                        button {
+                            width: 35%;
+                            border: 0;
+                            text-transform: uppercase;
+                            font-weight: bolder;
+                            cursor: pointer;
+                            background-color: gray;
+                            color: gainsboro;
+
+                            &.isEnabled {
+                                background: #006168;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

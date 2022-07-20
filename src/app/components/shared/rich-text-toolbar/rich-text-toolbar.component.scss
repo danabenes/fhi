@@ -64,6 +64,19 @@
                 }
             }
         }
+
+        .text-color {
+            background: none !important;
+            align-items: center;
+            display: flex;
+            padding: 0 10px;
+            margin-right: 10px;
+        }
+
+        .font-bold, .font-italic {
+            width: 30px;
+            align-self: center;
+        }
     }
 
     // ul {

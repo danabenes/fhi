@@ -26,6 +26,25 @@
         <p class="size-value">{{fontSize}}</p>
         <p class="add" (click)="handleFont('add')"><fa-icon [icon]="faPlus"></fa-icon></p>
     </div>
+    <!-- text color -->
+    <div class="text-color"
+        [style.color]="textColor"
+        [cpPosition]="'bottom'"
+        [cpPositionOffset]="'50%'"
+        [cpPositionRelativeToArrow]="true"
+        [(colorPicker)]="textColor"
+        [style.background]="textColor"
+        (colorPickerChange)="onColorChange('text', textColor)">
+        <fa-icon [icon]="faEyeDropper"></fa-icon>
+    </div>
+    <!-- bold -->
+    <div class="font-bold" (click)="setStyle('fontStyle','bold')">
+        <fa-icon [icon]="faBold"></fa-icon>
+    </div>
+    <!-- Italic -->
+    <div class="font-italic" (click)="setStyle('fontStyle','italic')">
+        <fa-icon [icon]="faItalic"></fa-icon>
+    </div>
   </div>
-  <div class="delete"><fa-icon [icon]="faDelete"></fa-icon></div>
+  <div class="delete" (click)="deleteElement()"><fa-icon [icon]="faDelete"></fa-icon></div>
 </div>

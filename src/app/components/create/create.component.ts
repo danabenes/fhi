@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create',
@@ -10,6 +11,7 @@ export class CreateComponent implements OnInit {
   @ViewChild('canvas')canvas!: ElementRef;
   @ViewChild('richText')richText!: ElementRef;
 
+  faDrag = faLocationArrow;
   arrayOfElements: Array<any> = [];
   selectedElement: any;
 
@@ -60,6 +62,12 @@ export class CreateComponent implements OnInit {
     if(styles.key === 'bg') {
       this.backgroundColor = styles.value;
     }
+  }
+
+  deleteItem() {
+    this.arrayOfElements.forEach((value,index)=>{
+      if(index==this.currentIndex) this.arrayOfElements.splice(index,1);
+    });
   }
 
 }

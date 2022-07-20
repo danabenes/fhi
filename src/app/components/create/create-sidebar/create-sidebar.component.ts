@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { faFileCode, faCloudUploadAlt, faFont, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faFileCode, faCloudUploadAlt, faFont, faSearch, faImages } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-sidebar',
@@ -12,8 +12,12 @@ export class CreateSidebarComponent implements OnInit {
   faCloudUploadAlt = faCloudUploadAlt;
   faFont = faFont;
   faSearch = faSearch;
-  currentTab : string = 'text';
+  faImages = faImages;
+  currentTab : string = 'upload';
   currentElementList: Array<any> = [];
+
+  selectedFileName: string = 'Select Image';
+  enableUploadBtn: boolean = false;
 
   @Output() element: EventEmitter<any> = new EventEmitter();
 
@@ -64,6 +68,15 @@ export class CreateSidebarComponent implements OnInit {
   addElement(type: string, data: any) {
     data.type = type;
     this.element.emit(data);
+  }
+
+  selectImage(imageDetails: any) {
+    this.selectedFileName = imageDetails.target.files[0].name;
+    this.enableUploadBtn = true;
+  }
+
+  uploadImage() {
+    console.log('upload image');
   }
 
 }

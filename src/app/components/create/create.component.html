@@ -3,14 +3,14 @@
 <div class="container">
     <div class="content" (click)="clickedOutside($event)">
         <div class="toolbar-container">
-            <app-rich-text-toolbar #richText (style)="setElementStyle($event)" [fontSize]="defaultFontSize"></app-rich-text-toolbar>
+            <app-rich-text-toolbar #richText (style)="setElementStyle($event)" (deleteItem)="deleteItem()" [fontSize]="defaultFontSize"></app-rich-text-toolbar>
         </div>
         <section #canvas class="area" id="drag-resize-area" 
             [ngClass]="{bgActive: bgSelected && currentIndex === 0}"
             [style.background]="backgroundColor" 
             (click)="selectBgArea($event)">
             <div *ngFor="let element of arrayOfElements | slice:1 ; index as indexOfelement;" cdkDrag>
-                <div>
+                <div class="wrapper">
                     <div class="element-container"
                         (click)="selectElement(indexOfelement + 1)"
                         [ngClass]="{isActive: currentIndex === indexOfelement + 1, isTextArea: element.type === 'textbox'}">
@@ -25,8 +25,17 @@
                             autofocus
                             #autosize="cdkTextareaAutosize"
                             cdkAutosizeMinRows="1">Add text here</textarea>
+                        <div class="image-wrapper" *ngIf="element.type === 'image'"
+                            [ngClass]="{isActive: currentIndex === indexOfelement + 1}">
+                            <img src="assets/images/bg-images/{{element.image}}">
+                        </div>
                     </div>
-                    <div *ngIf="currentIndex === indexOfelement + 1" cdkDragHandle>drag</div>
+                    <div *ngIf="currentIndex === indexOfelement + 1" cdkDragHandle>
+                        <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </section>

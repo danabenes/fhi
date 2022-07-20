@@ -15,7 +15,7 @@
                     <span>Text</span>
                 </li>
                 <li (click)="showList('image')" [ngClass]="{'isActive': currentTab === 'image'}">
-                    <fa-icon [icon]="faFont"></fa-icon><br>
+                    <fa-icon [icon]="faImages"></fa-icon><br>
                     <span>Image</span>
                 </li>
             </ul>
@@ -27,19 +27,14 @@
                 <fa-icon [icon]="faSearch"></fa-icon>
             </div>
 
-            
             <div class="element-list">
 
                 <!-- TEXT -->
                 <div *ngIf="currentTab === 'text'">
-                    <div class="element-text" *ngFor="let textElem of currentElementList" 
-                        style="font-family: {{textElem.fontFace}}; font-size: {{textElem.fontSize}};"
-                        (click)="addElement('textbox', textElem)">
-                                {{textElem.label}}
-                    </div>
+                    <div class="element-text" (click)="addElement('textbox', {})">Add text here</div>
                 </div>
 
-                <!-- TEMPLAT -->
+                <!-- TEMPLATE -->
                 <div *ngIf="currentTab === 'template'">
                     <div class="lbl-seeAll">
                         <p>Recent</p>
@@ -60,7 +55,20 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- UPLOAD -->
+                <div class="uploaded-images" *ngIf="currentTab === 'upload'">
+                    <div class="upload-form">
+                        <input type="file" accept="image/*" id="select-image" (change)="selectImage($event)" />
+                        <div class="form-display">
+                            <label class="select-image" for="select-image"
+                                [ngClass]="{hasImage: selectedFileName !== 'Select Image'}"><span>{{selectedFileName}}</span></label>
+                                <button [ngClass]="{isEnabled: enableUploadBtn}" (click)="uploadImage()">Upload</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

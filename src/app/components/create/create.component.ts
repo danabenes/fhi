@@ -18,6 +18,7 @@ export class CreateComponent implements OnInit {
   bgSelected : boolean = false;
   currentIndex:any = null;
   backgroundColor: string = 'white';
+  elementFillColor: string = 'black';
   defaultFontSize : number = 12;
 
   constructor(
@@ -59,9 +60,11 @@ export class CreateComponent implements OnInit {
       this.arrayOfElements[this.currentIndex][styles.key] = styles.value;
     }
 
-    if(styles.key === 'bg') {
+    if(styles.key === 'bg' && this.currentIndex === 0) {
       this.backgroundColor = styles.value;
     }
+
+    console.log(this.arrayOfElements);
   }
 
   deleteItem() {

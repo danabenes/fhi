@@ -14,6 +14,8 @@
                     <div class="element-container"
                         (click)="selectElement(indexOfelement + 1)"
                         [ngClass]="{isActive: currentIndex === indexOfelement + 1, isTextArea: element.type === 'textbox'}">
+
+                        <!-- START TEXTAREA -->
                         <textarea *ngIf="element.type === 'textbox'"
                             [ngClass]="{notSelected: currentIndex !== indexOfelement + 1}"
                             [style.font-size]="element.fontSize"
@@ -25,37 +27,44 @@
                             autofocus
                             #autosize="cdkTextareaAutosize"
                             cdkAutosizeMinRows="1">Add text here</textarea>
+                        <!-- END TEXTAREA -->
+
+                        <!-- START IMAGE -->
                         <div class="image-wrapper" *ngIf="element.type === 'image'"
                             [ngClass]="{isActive: currentIndex === indexOfelement + 1}">
                             <img src="assets/images/bg-images/{{element.image}}">
                         </div>
+                        <!-- END IMAGE -->
+
+                        <!-- START ELEMENT -->
                         <div class="element-wrapper" [ngClass]="{isActive: currentIndex === indexOfelement + 1}" *ngIf="element.type === 'element'">
                             <div class="shape-container" *ngIf="element.figure === 'circle'">
                                 <svg viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="50" fill="black" />
+                                    <circle cx="50" cy="50" r="50" [attr.fill]="element.bg"   />
                                 </svg>
                             </div>
                             <div class="shape-container" *ngIf="element.figure === 'square'">
                                 <svg viewBox="0 0 100 100">
-                                    <rect width="100" height="100" fill="black" />
+                                    <rect width="100" height="100" [attr.fill]="element.bg" />
                                 </svg>
                             </div>
                             <div class="shape-container" *ngIf="element.figure === 'rect-radius'">
                                 <svg viewBox="0 0 100 100">
-                                    <rect rx="10" ry="10" width="100" height="100" fill="black"/>
+                                    <rect rx="10" ry="10" width="100" height="100" [attr.fill]="element.bg"/>
                                 </svg>
                             </div>
                             <div class="shape-container" *ngIf="element.figure === 'hline'">
                                 <svg viewBox="0 0 100 100">
-                                    <line x1="20" y1="20" x2="20" y2="130" stroke="black" stroke-width="5"></line>
+                                    <line x1="50" y1="0" x2="50" y2="100" [attr.stroke]="element.bg" stroke-width="5"></line>
                                 </svg>
                             </div>
                             <div class="shape-container" *ngIf="element.figure === 'vline'">
                                 <svg viewBox="0 0 100 100">
-                                    <path d="M 10,10 H 200" stroke="black" stroke-width="5" />
+                                    <path d="M 0,50 H 100" [attr.stroke]="element.bg" stroke-width="5" />
                                 </svg>
                             </div>
                         </div>
+                        <!-- END ELEMENT -->
                     </div>
                     <div *ngIf="currentIndex === indexOfelement + 1" cdkDragHandle>
                         <svg width="24px" fill="currentColor" viewBox="0 0 24 24">

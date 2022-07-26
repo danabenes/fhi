@@ -76,19 +76,29 @@
                 <div class="elements-container" *ngIf="currentTab === 'elements'">
                     <ul>
                         <li>
-                            <div (click)="addElement('element', {type: 'element', figure: 'circle'})">circle</div>
+                            <div (click)="addElement('element', {type: 'element', figure: 'circle'})">
+                                <img src="assets/images/circle.png">
+                            </div>
                         </li>
                         <li>
-                            <div (click)="addElement('element', {type: 'element', figure: 'square'})">square</div>
+                            <div (click)="addElement('element', {type: 'element', figure: 'square'})">
+                                <img src="assets/images/square.png">
+                            </div>
                         </li>
                         <li>
-                            <div (click)="addElement('element', {type: 'element', figure: 'rect-radius'})">rect-radius</div>
+                            <div (click)="addElement('element', {type: 'element', figure: 'rect-radius'})">
+                                <img src="assets/images/square-radius.png">
+                            </div>
                         </li>
                         <li>
-                            <div (click)="addElement('element', {type: 'element', figure: 'hline'})">line</div>
+                            <div (click)="addElement('element', {type: 'element', figure: 'hline', bg: 'black'})">
+                                <img src="assets/images/hline.png">
+                            </div>
                         </li>
                         <li>
-                            <div (click)="addElement('element', {type: 'element', figure: 'vline'})">line</div>
+                            <div (click)="addElement('element', {type: 'element', figure: 'vline', bg: 'black'})">
+                                <img src="assets/images/vline.png">
+                            </div>
                         </li>
                     </ul>
                 </div>

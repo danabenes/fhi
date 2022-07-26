@@ -128,7 +128,8 @@
         &.isActive {
           .shape-container {
             resize: both;
-            overflow: auto;
+            overflow: hidden;
+            padding: 0.25em;
           }
         }
       }

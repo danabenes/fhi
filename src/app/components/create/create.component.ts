@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-create',
@@ -9,6 +10,7 @@ import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 export class CreateComponent implements OnInit {
 
   @ViewChild('canvas')canvas!: ElementRef;
+  @ViewChild('screen')screen!: ElementRef;
   @ViewChild('richText')richText!: ElementRef;
 
   faDrag = faLocationArrow;
@@ -63,13 +65,20 @@ export class CreateComponent implements OnInit {
     if(styles.key === 'bg' && this.currentIndex === 0) {
       this.backgroundColor = styles.value;
     }
-
-    console.log(this.arrayOfElements);
   }
 
   deleteItem() {
     this.arrayOfElements.forEach((value,index)=>{
       if(index==this.currentIndex) this.arrayOfElements.splice(index,1);
+    });
+  }
+
+  shareTemplate() {
+    html2canvas(this.canvas.nativeElement).then(function(canvas) {
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/jpeg");
+      a.download = "image.jpeg";
+      a.click();
     });
   }
 

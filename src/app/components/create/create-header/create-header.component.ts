@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faAngleLeft, faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,9 +11,15 @@ export class CreateHeaderComponent implements OnInit {
   faAngleLeft = faAngleLeft;
   faPen = faPen;
 
+  @Output() share: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  saveAsImage() {
+    this.share.emit();
   }
 
 }

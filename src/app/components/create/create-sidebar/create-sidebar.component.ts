@@ -6,6 +6,7 @@ import { faFileCode, faCloudUploadAlt, faFont, faSearch, faImages } from '@forta
   templateUrl: './create-sidebar.component.html',
   styleUrls: ['./create-sidebar.component.scss']
 })
+
 export class CreateSidebarComponent implements OnInit {
 
   faFileCode = faFileCode;
@@ -13,7 +14,7 @@ export class CreateSidebarComponent implements OnInit {
   faFont = faFont;
   faSearch = faSearch;
   faImages = faImages;
-  currentTab : string = 'upload';
+  currentTab : string = 'elements';
   currentElementList: Array<any> = [];
 
   selectedFileName: string = 'Select Image';
@@ -50,6 +51,13 @@ export class CreateSidebarComponent implements OnInit {
     }
   ];
 
+  // FOR SHAPES
+  shapesList = [
+    {
+      fig: '<svg width="100%" height="90"><circle cx="50" cy="50" r="40" fill="white" /></svg>'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -60,6 +68,8 @@ export class CreateSidebarComponent implements OnInit {
     this.currentTab = selected;
     if(selected === 'text') {
       this.currentElementList = this.textList;
+    } else if (selected === 'elements'){
+      this.currentElementList = this.shapesList;
     } else {
       this.currentElementList = this.imagesList;
     }

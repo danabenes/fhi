@@ -175,6 +175,27 @@
                     }
                 }
             }
+
+            .elements-container {
+                ul {
+                    list-style: none;
+                    margin: 20px 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+
+                    li {
+                        width: 50%;
+                        align-content: center;
+
+                        div {
+                            text-align: center;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
         }
     }
 }

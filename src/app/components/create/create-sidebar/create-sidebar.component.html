@@ -18,6 +18,10 @@
                     <fa-icon [icon]="faImages"></fa-icon><br>
                     <span>Image</span>
                 </li>
+                <li (click)="showList('elements')" [ngClass]="{'isActive': currentTab === 'elements'}">
+                    <fa-icon [icon]="faImages"></fa-icon><br>
+                    <span>Elements</span>
+                </li>
             </ul>
         </div>
         <div class="list">
@@ -66,6 +70,27 @@
                                 <button [ngClass]="{isEnabled: enableUploadBtn}" (click)="uploadImage()">Upload</button>
                         </div>
                     </div>
+                </div>
+
+                <!-- ELEMENTS -->
+                <div class="elements-container" *ngIf="currentTab === 'elements'">
+                    <ul>
+                        <li>
+                            <div (click)="addElement('element', {type: 'element', figure: 'circle'})">circle</div>
+                        </li>
+                        <li>
+                            <div (click)="addElement('element', {type: 'element', figure: 'square'})">square</div>
+                        </li>
+                        <li>
+                            <div (click)="addElement('element', {type: 'element', figure: 'rect-radius'})">rect-radius</div>
+                        </li>
+                        <li>
+                            <div (click)="addElement('element', {type: 'element', figure: 'hline'})">line</div>
+                        </li>
+                        <li>
+                            <div (click)="addElement('element', {type: 'element', figure: 'vline'})">line</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

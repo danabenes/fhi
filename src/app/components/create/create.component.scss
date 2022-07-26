@@ -1,131 +1,151 @@
 .container {
-    padding: 80px 0 0 350px;
-    box-sizing: border-box;
-    height: 100%;
-    background-color: #f5f5f5;
+  padding: 80px 0 0 350px;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #f5f5f5;
 
-    .content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+  .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+
+      .toolbar-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 10px;
+      }
+
+      .area {
         position: relative;
+        height: 500px;
+        width: 500px;
+        background: white;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        z-index: 2;
+        cursor: pointer;
 
-        .toolbar-container {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          background-color: white;
-          padding: 10px;
+        &.bgActive {
+          border: 2px dotted black;
+        }
+      
+        &.large {
+          height: 500px;
         }
 
-        .area {
-          position: relative;
-          height: 500px;
-          width: 500px;
-          background: white;
-          box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-          z-index: 2;
-          cursor: pointer;
-          overflow: hidden;
+        &.isActive {
+          border: 1px dotted black;
+        }
 
-          &.bgActive {
-            border: 2px dotted black;
+        .drag-handler {
+          display: none;
+
+          &.enableDrag {
+            display: block;
           }
-        
-          &.large {
-            height: 500px;
-          }
+        }
+
+        .element-container {
+          width: auto;
+          display: inline-block;
+          resize: none;
 
           &.isActive {
-            border: 1px dotted black;
+            border: 1px solid black;
           }
 
-          .drag-handler {
-            display: none;
+          &.isTextArea {
+            textarea {
+              border: 0;
+              background-color: transparent;
+              resize: both;
 
-            &.enableDrag {
-              display: block;
-            }
-          }
-
-          .element-container {
-            width: auto;
-            display: inline-block;
-            resize: none;
-
-            &.isActive {
-              border: 1px solid black;
-            }
-
-            &.isTextArea {
-              textarea {
+              &:focus, &:focus-visible {
                 border: 0;
-                background-color: transparent;
-                resize: both;
+                outline: none;
+              }
 
-                &:focus, &:focus-visible {
-                  border: 0;
-                  outline: none;
-                }
-
-                &.notSelected {
-                  resize: none;
-                }
+              &.notSelected {
+                resize: none;
               }
             }
           }
-
-          .wrapper {
-            position: relative;
-            display: inline-block;
-          }
         }
 
-        textarea {
-          width: auto;
-          max-width: 500px;
-          max-height: 500px;
-          background-color: transparent;
-          border: 0;
+        .wrapper {
+          position: relative;
+          display: inline-block;
+        }
+      }
+
+      textarea {
+        width: auto;
+        max-width: 500px;
+        max-height: 500px;
+        background-color: transparent;
+        border: 0;
+        overflow: hidden;
+      }
+
+      .image-wrapper {
+        width: 200px;
+        height: 200px;
+        max-width: 500px;
+        max-height: 500px;
+
+        &.isActive {
+          resize: both;
           overflow: hidden;
         }
 
-        .image-wrapper {
-          width: 200px;
-          height: 200px;
-          max-width: 500px;
-          max-height: 500px;
+        img {
+          height: 100%;
+        }
+      }
 
-          &.isActive {
-            resize: both;
-            overflow: hidden;
-          }
+      .element-wrapper {
 
-          img {
-            height: 100%;
+        .shape-container {
+          width: 100px;
+          height: 100px;
+          resize: none;
+          overflow: hidden;
+
+          svg {
+            width: 100%;
           }
         }
-    }
 
-    .activeElement {
-      textarea {
-        resize: both;
-        overflow: auto;
-        border: 1px dotted black;
+        &.isActive {
+          .shape-container {
+            resize: both;
+            overflow: auto;
+          }
+        }
       }
-    }
-}
+  }
 
-::ng-deep {
-  .cdk-drag-handle {
-    margin: 15px auto 0 auto !important;
-    text-align: center !important;
+  .activeElement {
+    textarea {
+      resize: both;
+      overflow: auto;
+      border: 1px dotted black;
+    }
   }
 }
 
+::ng-deep {
+.cdk-drag-handle {
+  margin: 15px auto 0 auto !important;
+  text-align: center !important;
+}
+}
+
 #download {
-    display: none;
+  display: none;
 }
 

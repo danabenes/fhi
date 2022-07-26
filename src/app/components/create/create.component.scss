@@ -55,10 +55,14 @@
           resize: none;
 
           &.isActive {
-            border: 1px solid black;
+            border: 1px solid #669383;
+            background: #f3f3f3ac;
           }
 
           &.isTextArea {
+            padding: .25rem;
+            border-radius: 5px;
+
             textarea {
               border: 0;
               background-color: transparent;
@@ -100,6 +104,7 @@
         &.isActive {
           resize: both;
           overflow: hidden;
+          border-radius: 5px;
         }
 
         img {
@@ -139,10 +144,18 @@
 }
 
 ::ng-deep {
-.cdk-drag-handle {
-  margin: 15px auto 0 auto !important;
-  text-align: center !important;
-}
+  .cdk-drag-handle {
+    margin: 0 auto !important;
+    text-align: center !important;
+    position: absolute;
+    bottom: 0;
+    right: -30px;
+    background: white;
+    height: 26px;
+    width: 26px;
+    padding: 1px;
+    border-radius: 50px;
+  }
 }
 
 #download {
